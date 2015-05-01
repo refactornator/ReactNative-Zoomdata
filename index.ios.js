@@ -5,6 +5,9 @@
 'use strict';
 
 var React = require('react-native');
+
+var LoginOverlay = require('./overlays/LoginOverlay');
+
 var {
   AppRegistry,
   StyleSheet,
@@ -20,7 +23,13 @@ var WEBVIEW_REF = 'webview';
 
 var ZoomdataMobileNative = React.createClass({
   getInitialState: function() {
-    return {};
+    return {
+      isLoggedIn: false
+    };
+  },
+
+  handleLoginStatus: function(loggedIn) {
+    this.setState({'isLoggedIn': loggedIn});
   },
 
   render: function() {
@@ -31,6 +40,8 @@ var ZoomdataMobileNative = React.createClass({
           style={styles.webView}
           url='shell.html'
         />
+
+        <LoginOverlay isVisible={!this.state.isLoggedIn} updateLoginStatus={this.handleLoginStatus} />
       </View>
     );
   }
