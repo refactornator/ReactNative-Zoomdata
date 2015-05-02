@@ -16,11 +16,6 @@ var {
   WebView
 } = React;
 
-var HEADER = '#3b5998';
-var BGWASH = 'rgba(255,255,255,0.8)';
-
-var WEBVIEW_REF = 'webview';
-
 var ZoomdataMobileNative = React.createClass({
   getInitialState: function() {
     return {
@@ -36,7 +31,6 @@ var ZoomdataMobileNative = React.createClass({
     return (
       <View style={styles.container}>
         <WebView
-          ref={WEBVIEW_REF}
           style={styles.webView}
           url='shell.html'
         />
@@ -50,10 +44,10 @@ var ZoomdataMobileNative = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: HEADER,
+    backgroundColor: '#3b5998',
   },
   webView: {
-    backgroundColor: BGWASH,
+    backgroundColor: 'rgba(255,255,255,0.8)',
     height: 350,
   },
 });
