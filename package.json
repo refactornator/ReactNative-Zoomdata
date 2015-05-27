@@ -8,6 +8,8 @@
   "dependencies": {
     "react-native": "^0.4.1",
     "react-native-button": "^1.2.0",
-    "react-native-overlay": "^0.1.7"
+    "react-native-grid-view": "^0.3.6",
+    "react-native-overlay": "^0.1.7",
+    "react-native-router": "^0.1.3"
   }
 }

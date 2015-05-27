@@ -3,6 +3,7 @@
 var React = require('react-native');
 var Overlay = require('react-native-overlay');
 var Button = require('react-native-button');
+var Dimensions = require('Dimensions');
 
 var {
   AppRegistry,
@@ -14,6 +15,9 @@ var {
   TouchableHighlight,
   View,
 } = React;
+
+var width = Dimensions.get('window').width;
+var height = Dimensions.get('window').height;
 
 var LoginOverlay = React.createClass({
   getDefaultProps(): StateObject {
@@ -47,19 +51,20 @@ var LoginOverlay = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    height: height,
     alignItems: 'center',
     backgroundColor: '#575253'
   },
   logo: {
-    width: 320,
-    height: 118
+    marginTop: 50,
+    width: width - 55,
+    height: 98
   },
   textInput: {
     paddingLeft: 10,
     marginTop: 10,
     height: 40,
-    width: 320,
+    width: width - 55,
     borderColor: 'gray',
     borderWidth: 1,
     justifyContent: 'center',
@@ -67,7 +72,7 @@ var styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
-    width: 320,
+    width: width - 55,
     height: 50,
     backgroundColor: 'black',
   },

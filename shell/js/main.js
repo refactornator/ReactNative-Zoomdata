@@ -1,10 +1,10 @@
 var credentials = {
-  key: '553f0863d4c676c935a83739'
+  key: '554312fc4568aa27eafbe0ee'
 };
 
 var application = {
   secure: false,
-  host: 'localhost',
+  host: '192.168.42.67', //192.168.42.67
   port: 8080,
   path: '/zoomdata'
 };
@@ -32,7 +32,7 @@ var queryConfig = {
   }],
   metrics: [{
     name: 'usersentiment',
-    func: 'AVG'
+    func: 'avg'
   }]
 };
 
@@ -59,6 +59,8 @@ var visualizations = {
   }
 };
 
+var swiper = new Swiper('.swiper-container');
+
 var client, query;
 ZoomdataSDK.createClient({
     credentials: credentials,
@@ -74,14 +76,24 @@ ZoomdataSDK.createClient({
     query = newQuery;
     console.log(query);
 
-    var visualization = visualizations['donut'];
+    var visualization1 = visualizations['treeMap'];
 
     client
         .visualize({
-            element: document.body,
+            element: document.getElementById('treemap'),
             query: query,
-            visualization: visualization.name,
-            variables: visualization.variables
+            visualization: visualization1.name,
+            variables: visualization1.variables
+        });
+
+    var visualization2 = visualizations['donut'];
+
+    client
+        .visualize({
+            element: document.getElementById('donut'),
+            query: query,
+            visualization: visualization2.name,
+            variables: visualization2.variables
         });
 })
 .catch(onError);
