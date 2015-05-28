@@ -3,6 +3,7 @@
 var React = require('react-native');
 var {
   AppRegistry,
+  LayoutAnimation,
   StyleSheet,
   View,
   TouchableOpacity,
@@ -44,19 +45,26 @@ var VisualizationGridPage = React.createClass({
   },
 
   handleLoginStatus: function(loggedIn) {
+    LayoutAnimation.configureNext(animationConfig);
     this.setState({'isLoggedIn': loggedIn});
   },
 
   render: function() {
+    var grid = <GridView
+      items={this.state.visualizations}
+      itemsPerRow={2}
+      renderItem={this.renderItem}>
+    </GridView>;
+    
+    if(!this.state.isLoggedIn) {
+      grid = <View></View>;
+    }
+
     return (
       <View>
-        <GridView
-          items={this.state.visualizations}
-          itemsPerRow={2}
-          renderItem={this.renderItem}
-        />
+        {grid}
 
-        <LoginOverlay isVisible={!this.state.isLoggedIn} updateLoginStatus={this.handleLoginStatus} />
+        <LoginOverlay ref="overlay" isVisible={!this.state.isLoggedIn} updateLoginStatus={this.handleLoginStatus} />
       </View>
     );
   },
@@ -94,5 +102,19 @@ var styles = StyleSheet.create({
     height: 95
   }
 });
+
+var animationConfig = {
+  duration: 2000,
+  create: {
+    type: LayoutAnimation.Types.spring,
+    springDamping: 0.4,
+    property: LayoutAnimation.Properties.opacity,
+  },
+  update: {
+    type: LayoutAnimation.Types.spring,
+    springDamping: 0.4,
+    property: LayoutAnimation.Properties.opacity,
+  }
+};
 
 module.exports = VisualizationGridPage;

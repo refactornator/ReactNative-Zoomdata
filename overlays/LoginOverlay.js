@@ -7,7 +7,6 @@ var Dimensions = require('Dimensions');
 
 var {
   AppRegistry,
-  LayoutAnimation,
   StyleSheet,
   Image,
   Text,
@@ -15,6 +14,8 @@ var {
   TouchableHighlight,
   View,
 } = React;
+
+var RNTAnimation = require('react-native-tween-animation');
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
@@ -26,10 +27,16 @@ var LoginOverlay = React.createClass({
     };
   },
 
+  getInitialState: function() {
+    return {
+      top: 0
+    };
+  },
+
   render() {
     return (
       <Overlay isVisible={this.props.isVisible}>
-        <View style={styles.container}>
+        <View style={[{top: this.state.top}, styles.container]}>
           <Image style={styles.logo} source={require('image!zoomdata')} />
           <TextInput style={styles.textInput} placeholder="Username" />
           <TextInput style={styles.textInput} placeholder="Password" password={true} />
@@ -44,7 +51,28 @@ var LoginOverlay = React.createClass({
   },
 
   _handlePress(event) {
-    this.props.updateLoginStatus(true);
+    var hideAnimation = new RNTAnimation({
+      start: {
+        top: 0
+      },
+
+      end: {
+        top: height
+      },
+
+      duration: 500,
+
+      tween: 'easeOutBack',
+
+      frame: (tweenFrame) => {
+        this.setState(tweenFrame);
+      },
+
+      done: () => {
+        this.props.updateLoginStatus(true);
+      }
+    });
+    hideAnimation.start();
   },
 });
 
@@ -82,19 +110,5 @@ var styles = StyleSheet.create({
     fontSize: 35,
   }
 });
-
-var animationConfig = {
-  duration: 700,
-  create: {
-    type: LayoutAnimation.Types.spring,
-    springDamping: 0.4,
-    property: LayoutAnimation.Properties.opacity,
-  },
-  update: {
-    type: LayoutAnimation.Types.spring,
-    springDamping: 0.4,
-    property: LayoutAnimation.Properties.opacity,
-  }
-};
 
 module.exports = LoginOverlay;
