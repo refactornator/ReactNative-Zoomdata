@@ -20,7 +20,7 @@ var VisualizationGridPage = React.createClass({
     return {
       isLoggedIn: false,
       visualizations: [{
-        name: 'Bubbles',
+        name: 'Bubble',
         image: require('image!bubbles')
       }, {
         name: 'Pie',
@@ -61,7 +61,7 @@ var VisualizationGridPage = React.createClass({
     }
 
     return (
-      <View>
+      <View style={{backgroundColor: '#E6E6E6'}}>
         {grid}
 
         <LoginOverlay ref="overlay" isVisible={!this.state.isLoggedIn} updateLoginStatus={this.handleLoginStatus} />
@@ -73,7 +73,7 @@ var VisualizationGridPage = React.createClass({
     return (
       <TouchableOpacity onPress={() => this._pressItem(item)}>
         <View style={styles.item}>
-          <Text>{item.name}</Text>
+          <Text style={styles.itemText}>{item.name}</Text>
           <Image style={styles.itemImage} source={item.image} />
         </View>
       </TouchableOpacity>
@@ -92,14 +92,28 @@ var VisualizationGridPage = React.createClass({
 var styles = StyleSheet.create({
   item: {
     flex: 1,
+    margin: 10,
     alignItems: 'center',
-    padding: 20
+    backgroundColor: 'white',
+    shadowColor: '#595959',
+    shadowOffset: {
+      width: 2,
+      height: 2
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 0
   },
   itemText: {
+    marginTop: 5,
+    marginLeft: 10,
+    color: '#575757',
+    alignSelf: 'flex-start'
   },
   itemImage: {
-    width: 140,
-    height: 95
+    width: 148,
+    height: 95,
+    marginTop: 10,
+    marginBottom: 10
   }
 });
 

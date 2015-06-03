@@ -5,6 +5,7 @@ var {
   AppRegistry,
   StyleSheet,
   View,
+  Image,
   WebView,
 } = React;
 
@@ -16,8 +17,8 @@ var VisualizationPage = React.createClass({
       <View style={styles.container}>
         <WebView
           style={styles.webView}
-          url='shell.html'
-        />
+          url='shell.html'/>
+        <Image style={styles.tabBar} source={require('image!TabBar')} />
       </View>
     );
   }
@@ -32,6 +33,11 @@ var styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.8)',
     height: 350,
   },
+  tabBar: {
+    alignSelf: 'center',
+    width: 380,
+    height: 50
+  }
 });
 
 module.exports = VisualizationPage;

@@ -36,7 +36,7 @@ var ZoomdataMobileNative = React.createClass({
       <Router firstRoute={{
         name: 'Zoomdata Mobile',
         component: VisualizationGridPage
-      }} />
+      }} headerStyle={{backgroundColor: '#323232'}} />
     );
   },
 

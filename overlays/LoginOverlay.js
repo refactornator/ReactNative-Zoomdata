@@ -35,7 +35,7 @@ var LoginOverlay = React.createClass({
   render() {
     return (
       <Overlay isVisible={this.props.isVisible}>
-        <View style={[{top: this.state.top}, styles.container]}>
+        <Image source={require('image!loginBackground')} style={[{top: this.state.top}, styles.container]}>
           <Image style={styles.logo} source={require('image!loginLogo')} />
           <View style={[styles.textInputWrapperTop, styles.textInputWrapper]}>
             <TextInput style={[styles.usernameInput, styles.textInput]} placeholder="User Name" placeholderTextColor="#939393" />
@@ -46,10 +46,10 @@ var LoginOverlay = React.createClass({
           <View style={styles.button}>
             <TouchableHighlight
               onPress={this._handlePress}>
-                <Text style={[styles.button, styles.buttonText]}>LOG IN</Text>
+                <Text style={[styles.buttonText]}>LOG IN</Text>
             </TouchableHighlight>
           </View>
-        </View>
+        </Image>
       </Overlay>
     )
   },
@@ -83,9 +83,9 @@ var LoginOverlay = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
+    resizeMode: 'cover',
     height: height,
-    alignItems: 'center',
-    backgroundColor: '#575253'
+    alignItems: 'center'
   },
   logo: {
     marginTop: 80,
@@ -124,18 +124,24 @@ var styles = StyleSheet.create({
     fontFamily: 'Arial'
   },
   button: {
-    marginTop: 10,
+    marginTop: 20,
     width: width - 55,
-    height: 44,
+    height: 50,
     borderRadius: 12,
     backgroundColor: '#0095B6',
   },
   buttonText: {
     color: 'white',
     textAlign: 'center',
-    fontSize: 21,
+    alignSelf: 'center',
+    fontSize: 18,
+    top: 15,
     fontWeight: 'bold',
     fontFamily: 'Arial'
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover', // or 'stretch'
   }
 });
 
