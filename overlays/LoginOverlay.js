@@ -2,7 +2,6 @@
 
 var React = require('react-native');
 var Overlay = require('react-native-overlay');
-var Button = require('react-native-button');
 var Dimensions = require('Dimensions');
 
 var {
@@ -37,14 +36,19 @@ var LoginOverlay = React.createClass({
     return (
       <Overlay isVisible={this.props.isVisible}>
         <View style={[{top: this.state.top}, styles.container]}>
-          <Image style={styles.logo} source={require('image!zoomdata')} />
-          <TextInput style={styles.textInput} placeholder="Username" />
-          <TextInput style={styles.textInput} placeholder="Password" password={true} />
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this._handlePress}>
-              <Text style={[styles.button, styles.buttonText]}>LOG IN</Text>
-          </TouchableHighlight>  
+          <Image style={styles.logo} source={require('image!loginLogo')} />
+          <View style={[styles.textInputWrapperTop, styles.textInputWrapper]}>
+            <TextInput style={[styles.usernameInput, styles.textInput]} placeholder="User Name" placeholderTextColor="#939393" />
+          </View>
+          <View style={[styles.textInputWrapperBottom, styles.textInputWrapper]}>
+            <TextInput style={styles.textInput} placeholder="Password" placeholderTextColor="#939393" password={true} />
+          </View>
+          <View style={styles.button}>
+            <TouchableHighlight
+              onPress={this._handlePress}>
+                <Text style={[styles.button, styles.buttonText]}>LOG IN</Text>
+            </TouchableHighlight>
+          </View>
         </View>
       </Overlay>
     )
@@ -84,30 +88,54 @@ var styles = StyleSheet.create({
     backgroundColor: '#575253'
   },
   logo: {
-    marginTop: 50,
+    marginTop: 80,
+    marginBottom: 30,
+    width: width - 95,
+    height: 100
+  },
+  textInputWrapper: {
+    height: 50,
     width: width - 55,
-    height: 98
+    backgroundColor: 'white',
+    borderWidth: 2,
+    borderColor: '#D2D2D2'
+  },
+  textInputWrapperTop: {
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0
+  },
+  textInputWrapperBottom: {
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+    borderTopColor: 'transparent'
   },
   textInput: {
-    paddingLeft: 10,
-    marginTop: 10,
-    height: 40,
+    height: 50,
     width: width - 55,
-    borderColor: 'gray',
-    borderWidth: 1,
+    paddingLeft: 10,
+    color: '#979797',
     justifyContent: 'center',
     alignSelf: 'center',
+    backgroundColor: 'transparent',
+    fontFamily: 'Arial'
   },
   button: {
     marginTop: 10,
     width: width - 55,
-    height: 50,
-    backgroundColor: 'black',
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: '#0095B6',
   },
   buttonText: {
     color: 'white',
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 21,
+    fontWeight: 'bold',
+    fontFamily: 'Arial'
   }
 });
 
