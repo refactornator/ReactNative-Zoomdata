@@ -12,15 +12,42 @@ var VisualizationGridPage = require('./pages/VisualizationGridPage');
 var {
   AppRegistry,
   StyleSheet,
+  AlertIOS,
+  PushNotificationIOS
 } = React;
 
 var ZoomdataMobileNative = React.createClass({
+  componentWillMount() {
+    PushNotificationIOS.addEventListener('notification', this._onNotification);
+  },
+
+  componentWillUnmount() {
+    PushNotificationIOS.removeEventListener('notification', this._onNotification);
+  },
+
+  componentDidMount() {
+  },
+
   render: function() {
+    debugger;
+    PushNotificationIOS.requestPermissions();
+
     return (
       <Router firstRoute={{
         name: 'Zoomdata Mobile',
         component: VisualizationGridPage
       }} />
+    );
+  },
+
+  _onNotification(notification) {
+    AlertIOS.alert(
+      'Notification Received',
+      'Alert message: ' + notification.getMessage(),
+      [{
+        text: 'Dismiss',
+        onPress: null,
+      }]
     );
   }
 });

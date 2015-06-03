@@ -9,6 +9,8 @@
 
 #import "AppDelegate.h"
 
+#import <Parse/Parse.h>
+
 #import "RCTRootView.h"
 
 @implementation AppDelegate
@@ -34,7 +36,7 @@
   // $ curl 'http://localhost:8081/index.ios.bundle?dev=false&minify=true' -o iOS/main.jsbundle
   //
   // and uncomment the next following line
-  // jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+//   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"ZoomdataMobileNative"
@@ -45,7 +47,35 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  [Parse setApplicationId:@"y8d63lDAOXcR3GRU3uWbNBHjKhjHAGC5nZeG7bMF"
+                clientKey:@"zQ1KIq72UzzvFQ4CEr7cguhSdF7S6Feh2km7BjPF"];
+  
+  // Register for Push Notitications
+  UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                  UIUserNotificationTypeBadge |
+                                                  UIUserNotificationTypeSound);
+  UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                           categories:nil];
+  [application registerUserNotificationSettings:settings];
+  [application registerForRemoteNotifications];
+  
   return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  // Store the deviceToken in the current installation and save it to Parse.
+  PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+  [currentInstallation setDeviceTokenFromData:deviceToken];
+  [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  [PFPush handlePush:userInfo];
+  
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteNotificationReceived"
+                                                      object:self
+                                                    userInfo:userInfo];
 }
 
 @end
