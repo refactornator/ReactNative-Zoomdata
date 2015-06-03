@@ -1,15 +1,16 @@
 var credentials = {
-  key: '556620f4e4b0ecaf733d0f3e'
+  // key: '556620f4e4b0ecaf733d0f3e' // Real Time Sales
+  key: '556e754ae4b0a2d47be83a71' // solr1
 };
 
 var application = {
     secure: false,
-    host: '52.4.236.245',
+    host: '54.86.79.172',
     port: 8080,
     path: '/zoomdata'
 };
 
-var sourceName = 'Real Time Sales';
+var sourceName = 'solr1';
 
 var queryConfig = {
     tz: 'UTC',
@@ -18,30 +19,27 @@ var queryConfig = {
         pauseAfterRead: true
     },
     time: {
-        timeField: '_ts'
+        timeField: 'logtimestamp_dt'
     },
     filters: [],
     groupBy: [],
-    metrics: [
-        {
-            name: 'price',
-            func: 'avg'
-        }
-    ]
+    metrics: [{
+        name: 'resptime_l',
+        func: 'avg'
+    }]
 };
 
 var visualizations = [
     {
         name: 'Gauge',
         variables: {
-            'Metric': 'price:avg'
+            'Metric': 'resptime_l:avg',
+            'Max': 100
         }
     }
 ];
 
-var swiper = new Swiper('.swiper-container');
-
-debugger;
+// var swiper = new Swiper('.swiper-container');
 
 var client, query;
 ZoomdataSDK.createClient({
