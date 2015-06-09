@@ -35,7 +35,10 @@ var LoginOverlay = React.createClass({
   render() {
     return (
       <Overlay isVisible={this.props.isVisible}>
-        <Image source={require('image!loginBackground')} style={[{top: this.state.top}, styles.container]}>
+        <View style={[{top: this.state.top}, styles.container]}>
+          <Image source={require('image!loginBackground')} style={[{height: height, position: 'absolute', resizeMode: 'cover'}]}></Image>
+          <View style={[{height: height, width: width, position: 'absolute', backgroundColor: '#323232', opacity: 0.9}]}></View>
+
           <Image style={styles.logo} source={require('image!loginLogo')} />
           <View style={[styles.textInputWrapperTop, styles.textInputWrapper]}>
             <TextInput style={[styles.usernameInput, styles.textInput]} placeholder="User Name" placeholderTextColor="#939393" />
@@ -49,7 +52,7 @@ var LoginOverlay = React.createClass({
                 <Text style={[styles.buttonText]}>LOG IN</Text>
             </TouchableHighlight>
           </View>
-        </Image>
+        </View>
       </Overlay>
     )
   },
@@ -83,7 +86,6 @@ var LoginOverlay = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    resizeMode: 'cover',
     height: height,
     alignItems: 'center'
   },

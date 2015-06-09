@@ -21,6 +21,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		3D14CD841B190B2D00E69EE8 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2B2C4B1B190922002B7827 /* libRCTPushNotification.a */; };
+		3D50254D1B2674A40040CEA8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D50254C1B2674A40040CEA8 /* Images.xcassets */; };
 		3D71999F1AF433B600101FAE /* libRNOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D71999E1AF4338F00101FAE /* libRNOverlay.a */; };
 		3D7339211B16BB72007E381C /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7339201B16BB6C007E381C /* libRCTWebSocket.a */; };
 		3D9414F91AEF385000BCF186 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 3D9414F71AEF385000BCF186 /* js */; };
@@ -147,6 +148,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = iOS/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		3D2B2C461B190922002B7827 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
+		3D50254C1B2674A40040CEA8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ZoomdataMobileNative/Images.xcassets; sourceTree = "<group>"; };
 		3D71998F1AF4338F00101FAE /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = "<group>"; };
 		3D73391B1B16BB6C007E381C /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		3D9414F71AEF385000BCF186 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; name = js; path = shell/js; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				3D50254C1B2674A40040CEA8 /* Images.xcassets */,
 			);
 			name = ZoomdataMobileNative;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				3D9414FA1AEF385000BCF186 /* shell.html in Resources */,
 				008F07F31AC5B25A0029DE68 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				3D50254D1B2674A40040CEA8 /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				3D9414F91AEF385000BCF186 /* js in Resources */,
 			);
@@ -600,6 +604,8 @@
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: William Lindner (CAHDV74LFH)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -620,6 +626,8 @@
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: William Lindner (CAHDV74LFH)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

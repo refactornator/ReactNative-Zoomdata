@@ -27,7 +27,7 @@ var VisualizationGridPage = React.createClass({
         image: require('image!pie')
       }, {
         name: 'Gauge',
-        image: require('image!kpi')
+        image: require('image!gauge')
       }, {
         name: 'Treemap',
         image: require('image!treemap')
@@ -40,6 +40,9 @@ var VisualizationGridPage = React.createClass({
       }, {
         name: 'Donut',
         image: require('image!donut')
+      }, {
+        name: 'KPI',
+        image: require('image!kpi')
       }]
     };
   },
