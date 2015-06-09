@@ -10,7 +10,7 @@ var {
   Image,
   Text,
   TextInput,
-  TouchableHighlight,
+  TouchableOpacity,
   View,
 } = React;
 
@@ -46,12 +46,11 @@ var LoginOverlay = React.createClass({
           <View style={[styles.textInputWrapperBottom, styles.textInputWrapper]}>
             <TextInput style={styles.textInput} placeholder="Password" placeholderTextColor="#939393" password={true} />
           </View>
-          <View style={styles.button}>
-            <TouchableHighlight
-              onPress={this._handlePress}>
+          <TouchableOpacity onPress={this._handlePress}>
+            <View style={[{marginTop: 20}, styles.button]}>
                 <Text style={[styles.buttonText]}>LOG IN</Text>
-            </TouchableHighlight>
-          </View>
+            </View>
+          </TouchableOpacity>
         </View>
       </Overlay>
     )
@@ -126,7 +125,6 @@ var styles = StyleSheet.create({
     fontFamily: 'Arial'
   },
   button: {
-    marginTop: 20,
     width: width - 55,
     height: 50,
     borderRadius: 12,
