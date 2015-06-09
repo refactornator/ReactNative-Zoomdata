@@ -17,6 +17,8 @@ var VisualizationPage = React.createClass({
       <View style={styles.container}>
         <WebView
           style={styles.webView}
+          bounces={false}
+          scrollEnabled={false}
           url='shell.html'/>
         <Image style={styles.tabBar} source={require('image!TabBar')} />
       </View>
