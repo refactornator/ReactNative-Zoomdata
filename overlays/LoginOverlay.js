@@ -41,10 +41,10 @@ var LoginOverlay = React.createClass({
 
           <Image style={styles.logo} source={require('image!loginLogo')} />
           <View style={[styles.textInputWrapperTop, styles.textInputWrapper]}>
-            <TextInput style={[styles.usernameInput, styles.textInput]} placeholder="User Name" placeholderTextColor="#939393" />
+            <TextInput style={[styles.usernameInput, styles.textInput]} placeholder="User Name" value="admin" placeholderTextColor="#939393" />
           </View>
           <View style={[styles.textInputWrapperBottom, styles.textInputWrapper]}>
-            <TextInput style={styles.textInput} placeholder="Password" placeholderTextColor="#939393" password={true} />
+            <TextInput style={styles.textInput} placeholder="Password" placeholderTextColor="#939393" password={true} value="Z00mda1a" />
           </View>
           <TouchableOpacity onPress={this._handlePress}>
             <View style={[{marginTop: 20}, styles.button]}>

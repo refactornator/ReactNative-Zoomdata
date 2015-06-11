@@ -34,7 +34,7 @@ var visualizations = [
         name: 'Gauge',
         variables: {
             'Metric': 'resptime_l:avg',
-            'Max': 100
+            'Max': 300
         }
     }
 ];

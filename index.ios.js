@@ -29,7 +29,6 @@ var ZoomdataMobileNative = React.createClass({
   },
 
   render: function() {
-    debugger;
     PushNotificationIOS.requestPermissions();
 
     return (
