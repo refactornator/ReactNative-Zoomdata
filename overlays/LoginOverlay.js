@@ -44,7 +44,7 @@ var LoginOverlay = React.createClass({
             <TextInput style={[styles.usernameInput, styles.textInput]} placeholder="User Name" value="admin" placeholderTextColor="#939393" />
           </View>
           <View style={[styles.textInputWrapperBottom, styles.textInputWrapper]}>
-            <TextInput style={styles.textInput} placeholder="Password" placeholderTextColor="#939393" password={true} value="Z00mda1a" />
+            <TextInput style={styles.textInput} placeholder="Password" placeholderTextColor="#939393" password={true} />
           </View>
           <TouchableOpacity onPress={this._handlePress}>
             <View style={[{marginTop: 20}, styles.button]}>
